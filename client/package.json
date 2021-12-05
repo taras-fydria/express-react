@@ -1,0 +1,31 @@
+{
+  "name": "express-react-client",
+  "version": "1.0.0",
+  "description": "education project",
+  "main": "index.js",
+  "scripts": {
+    "dev-start" : "webpack ./webpack.config.js --mode=development",
+    "build-client" : "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taras-fydria/express-react.git"
+  },
+  "author": "Taras Fydria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taras-fydria/express-react/issues"
+  },
+  "homepage": "https://github.com/taras-fydria/express-react#readme",
+  "dependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}
