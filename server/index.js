@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const PORT = process.env.PORT || 5050
@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5050
 
 const app = express()
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'client', 'public', 'index.html'));
 });
 
 // const start = async () => {
