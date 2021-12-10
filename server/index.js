@@ -1,13 +1,19 @@
 if(process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 const path = require('path')
 const express = require('express')
 const PORT = process.env.PORT || 5050
-const db = require('./db')
+const db = require('./sequelize')
+const router = require('./routes/routes')
 
 const app = express()
+
+app.use('/api', router)
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname,'..', 'client', 'public', 'index.html'));
 });
+
 
 const start = async () => {
   try {
