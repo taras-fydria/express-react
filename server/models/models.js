@@ -2,11 +2,6 @@ const sequelize = require('../sequelize')
 const {DataTypes, STRING} = require('sequelize')
 
 const Station = sequelize.define('Station', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
   name: {
     type: DataTypes.STRING,
     unique: true
@@ -16,17 +11,12 @@ const Station = sequelize.define('Station', {
     unique: true
   },
   tel:{
-    type:DataTypes.STRING
+    type:DataTypes.STRING,
+    allowNull: false
   },
-  tanks:{
-    type:DataTypes.ARRAY(DataTypes.INTEGER),
-  }
 })
 
 const FuelType = sequelize.define('FuelType', {
-  id:{
-    type:DataTypes.INTEGER, primaryKey: true, autoIncrement:true,
-  },
   name:{
     type:STRING, unique:true, allowNull:false
   },
@@ -35,7 +25,7 @@ const FuelType = sequelize.define('FuelType', {
   }
 })
 
-const Region = sequelize.define('Region', {
+const Region = sequelize.define('Region',   {
   id:{
     type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true
   },
@@ -48,10 +38,17 @@ const Tank = sequelize.define('Tank', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   name: {type: DataTypes.STRING},
   volume:{type:DataTypes.INTEGER},
-  fuelType:{
-    type:DataTypes.INTEGER
-  }
 })
+
+Station.hasMany(Tank, {
+  foreignKey: 'tankId'
+})
+Tank.belongsTo(Station)
+
+FuelType.hasMany(Tank, {
+  foreignKey: 'tankId'
+})
+Tank.belongsTo(FuelType)
 
 module.exports = {
   Station,
