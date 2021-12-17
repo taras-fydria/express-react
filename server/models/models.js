@@ -12,7 +12,7 @@ const Station = sequelize.define('Station', {
   },
   tel:{
     type:DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
 })
 
