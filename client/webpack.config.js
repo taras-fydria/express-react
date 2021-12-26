@@ -1,7 +1,9 @@
-const {resolve, join} = require('path')
+const {resolve} = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack')
 
 module.exports = {
-  target: 'node',
+  target: 'web',
   entry: {
     index: resolve(__dirname, 'app', 'index.tsx')
   },
@@ -17,32 +19,42 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css?$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+        ]
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+      }
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
-    client: {
-      logging: 'info',
-      reconnect: true,
-    },
-    static: {
-      directory: join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 9000,
     hot: true,
-    magicHtml: true,
-    devMiddleware: {
-      writeToDisk: false,
-    }
+    open: false
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, 'public', 'index.html'),
+      favicon: resolve(__dirname, 'public', 'favicon.png'),
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
 }
-
-console.log(__dirname)
