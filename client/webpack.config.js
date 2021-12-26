@@ -1,6 +1,7 @@
 const {resolve} = require('path')
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   target: 'web',
@@ -8,6 +9,7 @@ module.exports = {
     index: resolve(__dirname, 'app', 'index.tsx')
   },
   output: {
+    publicPath: '/',
     filename: '[name].js',
     path: resolve(__dirname, 'dist')
   },
@@ -26,15 +28,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
@@ -55,6 +54,7 @@ module.exports = {
       template: resolve(__dirname, 'public', 'index.html'),
       favicon: resolve(__dirname, 'public', 'favicon.png'),
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin()
   ],
 }
