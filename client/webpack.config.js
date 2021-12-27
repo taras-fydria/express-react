@@ -1,11 +1,15 @@
-const {resolve, join} = require('path')
+const {resolve} = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  target: 'node',
+  target: 'web',
   entry: {
     index: resolve(__dirname, 'app', 'index.tsx')
   },
   output: {
+    publicPath: '/',
     filename: '[name].js',
     path: resolve(__dirname, 'dist')
   },
@@ -17,32 +21,40 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.css?$/,
         use: [
-          "sass-loader",
-        ],
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+        ]
       },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+      }
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
-    client: {
-      logging: 'info',
-      reconnect: true,
-    },
-    static: {
-      directory: join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 9000,
     hot: true,
-    magicHtml: true,
-    devMiddleware: {
-      writeToDisk: false,
-    }
+    open: false
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, 'public', 'index.html'),
+      favicon: resolve(__dirname, 'public', 'favicon.png'),
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin()
+  ],
 }
-
-console.log(__dirname)
