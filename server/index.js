@@ -19,7 +19,7 @@ app.get('*', (req, res) => {
 const start = async () => {
   try {
     await db.authenticate()
-    await db.sync()
+    await db.sync({alter: true})
     app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
   } catch (e) {
     console.error(e)

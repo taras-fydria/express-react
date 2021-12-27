@@ -4,15 +4,32 @@ const {DataTypes, STRING} = require('sequelize')
 const Station = sequelize.define('Station', {
   name: {
     type: DataTypes.STRING,
-    unique: true
+    unique: true,
+    allowNull: false,
+    validate: {
+      notNull: {
+        args: true, msg: 'empty name'
+      }
+    },
   },
   address: {
     type: DataTypes.STRING,
-    unique: true
+    unique: true,
+    allowNull: false,
+    validate: {
+      notNull: {
+        args: true, msg: 'empty address'
+      }
+    }
   },
   tel:{
     type:DataTypes.STRING,
-    allowNull: true
+    allowNull: false,
+    validate: {
+      notNull: {
+        args: true, msg: 'empty tell'
+      }
+    }
   },
 })
 
