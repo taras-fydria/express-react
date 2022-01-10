@@ -6,7 +6,7 @@ import {mainNavData} from "../../router/MainNavData";
 const MainHeader:FC = ()=>{
     return(
         <header>
-            <div>
+            <div className={`container`}>
                 <HeaderNav navMenu={mainNavData}/>
             </div>
         </header>
