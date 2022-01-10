@@ -1,27 +1,24 @@
 import * as React from "react";
 import {FC} from "react";
-import {routerType} from "../../router/router";
-import {Link} from "react-router-dom";
+import {NavLink, NavLinkProps} from "react-router-dom";
 
 interface iHeaderNav {
-    routes: routerType
+    navMenu: Array<NavLinkProps>
 }
 
-const Nav:FC<iHeaderNav> = (props)=>{
-    const {routes} = props
-    console.log(routes)
-    return(
+const Nav: FC<iHeaderNav> = (props) => {
+    const {navMenu} = props
+    return (
         <nav>
-            {routes && routes.length && (
+            {navMenu && navMenu.length > 0 && (
                 <ul>
-                    {routes.map(item=>(
-                        <li>
-                            <Link to={item.path}/>
-                        </li>
+                    {navMenu.map((item, i)=>(
+                    <li key={i}>
+                        <NavLink to={item.to}>{item.title}</NavLink>
+                    </li>
                     ))}
                 </ul>
             )}
-            Navigation
         </nav>
     )
 }

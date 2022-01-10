@@ -1,16 +1,16 @@
 import * as React from "react";
 import {FC} from "react";
 import HeaderNav from "./HeaderNav";
-import {routes} from "../../router/router";
+import {mainNavData} from "../../router/MainNavData";
 
-const Header:FC = ()=>{
+const MainHeader:FC = ()=>{
     return(
         <header>
             <div>
-                <HeaderNav routes={routes}/>
+                <HeaderNav navMenu={mainNavData}/>
             </div>
         </header>
     )
 }
 
-export default Header
+export default MainHeader

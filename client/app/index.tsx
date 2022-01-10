@@ -1,5 +1,9 @@
 import * as React from 'react'
 import * as  ReactDOM from 'react-dom'
-import App from "./app";
+import App from "./app"
+import {BrowserRouter} from 'react-router-dom'
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>, document.getElementById('app'));

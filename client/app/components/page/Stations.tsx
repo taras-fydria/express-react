@@ -1,12 +1,12 @@
 import * as React from "react";
 import {FC} from "react";
 
-const Station:FC = () => {
+const Stations:FC = () => {
   return(
       <div>
-          station
+          Station Page
       </div>
   )
 }
 
-export default Station
+export default Stations

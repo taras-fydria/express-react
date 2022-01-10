@@ -47,7 +47,8 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    open: false
+    open: false,
+    historyApiFallback:true
   },
   plugins: [
     new HtmlWebpackPlugin({
