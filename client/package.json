@@ -1,45 +1,22 @@
 {
-  "name": "express-react-client",
-  "version": "1.0.0",
-  "description": "education project",
-  "main": "dist/index.js",
+  "name": "vite-project",
+  "version": "0.0.0",
   "scripts": {
-    "dev-client": "webpack serve --mode=development",
-    "build-client": "webpack --mode=production"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/taras-fydria/express-react.git"
-  },
-  "author": "Taras Fydria",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/taras-fydria/express-react/issues"
-  },
-  "homepage": "https://github.com/taras-fydria/express-react#readme",
   "dependencies": {
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
-    "@types/react-router-dom": "^5.3.2",
-    "autoprefixer": "^10.4.2",
-    "bootstrap": "^5.1.3",
-    "html-webpack-plugin": "^5.5.0",
-    "postcss-loader": "^6.2.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.5.2",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "css-loader": "^6.5.1",
-    "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^2.4.5",
-    "sass": "^1.45.1",
-    "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.65.0"
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@vitejs/plugin-react": "^1.0.7",
+    "react-router-dom": "^6.2.1",
+    "sass": "^1.47.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
   }
 }

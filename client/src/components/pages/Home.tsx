@@ -4,7 +4,7 @@ import {FC} from "react";
 const Home:FC = () => {
   return(
       <div>
-        <div>Home Page</div>
+        <div>Home Page 12356789</div>
       </div>
   )
 }
