@@ -8,3 +8,7 @@
 /.idea
 /server/http/test.http
 /test/node_modules/
+/client/dist/assets/favicon.17e50649.svg
+/client/dist/assets/index.b085258b.js
+/client/dist/assets/index.ed209ab7.css
+/client/dist/assets/vendor.755ee72c.js

@@ -1,14 +1,31 @@
-import express from 'express';
-import {Application, Request, Response} from "express/ts4.0";
+if(process.env.NODE_ENV !== 'production') require('dotenv').config()
+
+import path from 'path'
+import express, {Request, Response, Application} from 'express'
+import DataBase from './DataBase'
+import AppRouter from './routes/routes'
+
+const PORT = process.env.PORT || 5050
 
 const app: Application = express()
 
-const port: number = 3001
+app.use(express.json())
+app.use('/api', AppRouter)
+app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
-app.get('/toto', (req: Request, res: Response) => {
-    res.send('Hello toto')
-})
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+});
 
-app.listen(port, function () {
-    console.log(`App is listening on port ${port} !`)
-})
+
+const start = async () : Promise<void> => {
+    try {
+        await DataBase.authenticate()
+        await DataBase.sync({alter: true})
+        app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+start()
