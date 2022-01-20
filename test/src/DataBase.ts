@@ -5,7 +5,7 @@ declare global {
         interface ProcessEnv {
             DB_NAME: string;
             NODE_ENV: 'development' | 'production';
-            DB_PORT?: number;
+            DB_PORT: number | undefined;
             DB_USER: string;
             DB_PASS: string;
         }

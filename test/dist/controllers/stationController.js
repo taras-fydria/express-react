@@ -35,44 +35,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-if (process.env.NODE_ENV !== 'production')
-    require('dotenv').config();
-var path_1 = __importDefault(require("path"));
-var express_1 = __importDefault(require("express"));
-var DataBase_1 = __importDefault(require("./DataBase"));
-var routes_1 = __importDefault(require("./routes/routes"));
-var PORT = process.env.PORT || 5050;
-var app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use('/api', routes_1.default);
-app.use(express_1.default.static(path_1.default.resolve(__dirname, '..', 'client', 'dist')));
-app.get('*', function (req, res) {
-    res.sendFile(path_1.default.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
-});
-var start = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var e_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, DataBase_1.default.authenticate()];
-            case 1:
-                _a.sent();
-                return [4 /*yield*/, DataBase_1.default.sync({ alter: true })];
-            case 2:
-                _a.sent();
-                app.listen(PORT, function () { return console.log("Example app listening at http://localhost:".concat(PORT)); });
-                return [3 /*break*/, 4];
-            case 3:
-                e_1 = _a.sent();
-                console.error(e_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
-    });
-}); };
-start();
+var models_1 = require("../models/models");
+var StationController = /** @class */ (function () {
+    function StationController() {
+    }
+    StationController.prototype.getAll = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var stations;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, models_1.Station.findAll()];
+                    case 1:
+                        stations = _a.sent();
+                        return [2 /*return*/, res.json(stations)];
+                }
+            });
+        });
+    };
+    StationController.prototype.create = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, name, address, tel, station;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        console.log(req.body);
+                        _a = req.body, name = _a.name, address = _a.address, tel = _a.tel;
+                        return [4 /*yield*/, models_1.Station.create({ name: name, address: address, tel: tel }).catch(function (err) { return console.log(err); })];
+                    case 1:
+                        station = _b.sent();
+                        return [2 /*return*/, res.json(station)];
+                }
+            });
+        });
+    };
+    return StationController;
+}());
+exports.default = new StationController();
