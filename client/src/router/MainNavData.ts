@@ -16,5 +16,10 @@ export const mainNavData:Array<NavLinkProps> = [
         to: '/tanks',
         title: 'Tanks',
         children: false
+    },
+    {
+        to: '/lol',
+        title: 'Lol Page',
+        children: false,
     }
 ]
