@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev-backend": "nodemon server/index.js",
-    "test-ts-back": "node test/dist/app.js"
+    "start": "node server/dist/app.js"
   },
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "dotenv": "^14.3.0"
   }
 }

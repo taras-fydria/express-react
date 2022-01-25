@@ -11,10 +11,10 @@ const app: Application = express()
 
 app.use(express.json())
 app.use('/api', AppRouter)
-app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
+app.use(express.static(path.resolve(__dirname, '..', '..', 'client', 'dist')));
 
 app.get('*', (req: Request, res: Response) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'));
 });
 
 

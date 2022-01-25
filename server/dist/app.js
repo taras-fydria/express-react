@@ -49,9 +49,9 @@ var PORT = process.env.PORT || 5050;
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/api', routes_1.default);
-app.use(express_1.default.static(path_1.default.resolve(__dirname, '..', 'client', 'dist')));
+app.use(express_1.default.static(path_1.default.resolve(__dirname, '..', '..', 'client', 'dist')));
 app.get('*', function (req, res) {
-    res.sendFile(path_1.default.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+    res.sendFile(path_1.default.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'));
 });
 var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     var e_1;
