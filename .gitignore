@@ -4,8 +4,6 @@
 /client/package-lock.json
 /package-lock.json
 /node_modules/
-/.env
+/server/.env
 /.idea
 /server/http/test.http
-/test/node_modules/
-/server/.env
