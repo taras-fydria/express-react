@@ -13,7 +13,7 @@ declare global {
     }
 }
 
-const env = process.env
+const env : NodeJS.ProcessEnv = process.env
 
 const options: Options = {
     dialect: 'postgres',

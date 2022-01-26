@@ -7,3 +7,4 @@
 /server/.env
 /.idea
 /server/http/test.http
+/.env
