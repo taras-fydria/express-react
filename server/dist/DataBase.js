@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var sequelize_1 = require("sequelize");
-console.log(process.env);
 var env = process.env;
 var options = {
     dialect: 'postgres',
