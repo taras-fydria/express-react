@@ -8,17 +8,17 @@ var DataBase_1 = __importDefault(require("../DataBase"));
 var sequelize_1 = require("sequelize");
 exports.Station = DataBase_1.default.define('Station', {
     name: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.STRING,
         unique: true,
         allowNull: false,
     },
     address: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.STRING,
         unique: true,
         allowNull: false,
     },
     tel: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.STRING,
         allowNull: false,
     },
 });
@@ -27,21 +27,21 @@ var FuelType = DataBase_1.default.define('FuelType', {
         type: sequelize_1.STRING, unique: true, allowNull: false
     },
     price: {
-        type: sequelize_1.DataTypes.INTEGER, allowNull: false,
+        type: sequelize_1.INTEGER, allowNull: false,
     }
 });
 var Region = DataBase_1.default.define('Region', {
     id: {
-        type: sequelize_1.DataTypes.INTEGER, primaryKey: true, autoIncrement: true
+        type: sequelize_1.INTEGER, primaryKey: true, autoIncrement: true
     },
     name: {
-        type: sequelize_1.DataTypes.STRING, primaryKey: true, allowNull: false, unique: true
+        type: sequelize_1.STRING, primaryKey: true, allowNull: false, unique: true
     }
 });
 var Tank = DataBase_1.default.define('Tank', {
-    id: { type: sequelize_1.DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: sequelize_1.DataTypes.STRING },
-    volume: { type: sequelize_1.DataTypes.INTEGER },
+    id: { type: sequelize_1.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: sequelize_1.STRING },
+    volume: { type: sequelize_1.INTEGER },
 });
 exports.Station.hasMany(Tank, {
     foreignKey: 'tankId'

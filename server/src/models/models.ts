@@ -1,19 +1,19 @@
 import DataBase from '../DataBase'
-import {DataTypes, STRING}  from 'sequelize'
+import {INTEGER, STRING} from 'sequelize'
 
 export const Station = DataBase.define('Station', {
   name: {
-    type: DataTypes.STRING,
+    type: STRING,
     unique: true,
     allowNull: false,
   },
   address: {
-    type: DataTypes.STRING,
+    type: STRING,
     unique: true,
     allowNull: false,
   },
   tel:{
-    type:DataTypes.STRING,
+    type:STRING,
     allowNull: false,
   },
 })
@@ -23,23 +23,23 @@ const FuelType = DataBase.define('FuelType', {
     type:STRING, unique:true, allowNull:false
   },
   price:{
-    type:DataTypes.INTEGER, allowNull: false,
+    type:INTEGER, allowNull: false,
   }
 })
 
 const Region = DataBase.define('Region',   {
   id:{
-    type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true
+    type:INTEGER, primaryKey:true, autoIncrement:true
   },
   name:{
-    type:DataTypes.STRING, primaryKey:true, allowNull:false, unique:true
+    type:STRING, primaryKey:true, allowNull:false, unique:true
   }
 })
 
 const Tank = DataBase.define('Tank', {
-  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-  name: {type: DataTypes.STRING},
-  volume:{type:DataTypes.INTEGER},
+  id: {type: INTEGER, primaryKey: true, autoIncrement: true},
+  name: {type: STRING},
+  volume:{type:INTEGER},
 })
 
 Station.hasMany(Tank, {

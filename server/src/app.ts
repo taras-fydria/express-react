@@ -1,4 +1,6 @@
-if(process.env.NODE_ENV !== 'production') require('dotenv').config()
+import * as dotenv from 'dotenv'
+
+if (process.env.NODE_ENV !== 'production') dotenv.config()
 
 import path from 'path'
 import express, {Request, Response, Application} from 'express'

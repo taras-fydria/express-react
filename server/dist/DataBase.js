@@ -16,4 +16,4 @@ var options = {
     },
     ssl: true,
 };
-exports.default = new sequelize_1.Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, options);
+exports.default = new sequelize_1.Sequelize(process.env.DB_URI, options);

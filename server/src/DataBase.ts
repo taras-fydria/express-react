@@ -1,5 +1,7 @@
 import {Sequelize, Options} from 'sequelize'
 
+console.log(process.env)
+
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
@@ -30,8 +32,8 @@ const options: Options = {
     ssl: true,
 }
 
-export default  new Sequelize(
-    process.env.DB_URI,
+export default new Sequelize(
+    env.DB_URI,
     options
 )
 
