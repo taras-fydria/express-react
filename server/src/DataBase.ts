@@ -1,7 +1,5 @@
 import {Sequelize, Options} from 'sequelize'
 
-console.log(process.env)
-
 declare global {
     namespace NodeJS {
         interface ProcessEnv {

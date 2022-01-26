@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var sequelize_1 = require("sequelize");
+console.log(process.env);
 var env = process.env;
 var options = {
     dialect: 'postgres',
@@ -16,4 +17,4 @@ var options = {
     },
     ssl: true,
 };
-exports.default = new sequelize_1.Sequelize(process.env.DB_URI, options);
+exports.default = new sequelize_1.Sequelize(env.DB_URI, options);
