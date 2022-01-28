@@ -1,19 +1,34 @@
 import {Request, Response} from "express";
-import {Station} from '../models/models'
+import {Station} from '../entity/Station'
+import {getRepository} from "typeorm";
 
 class StationController {
-  async getAll(req: Request, res: Response) {
-    const stations = await Station.findAll()
-    return res.json(stations)
-  }
+    private stationRepository
 
-  async create(req: Request, res: Response) {
-    console.log(req.body)
-    const {name, address, tel} = req.body
-    const station = await Station.create({name, address, tel}).catch(err=>console.log(err))
-    return res.json(station)
+    constructor() {
+        this.stationRepository = getRepository<Station>(Station)
+    }
 
-  }
+    async getAll(req: Request, res: Response) {
+        const stations = await this.stationRepository.find()
+        return res.json(stations)
+    }
+
+    async create(req: Request, res: Response) {
+        try {
+            const station = await this.stationRepository.findOne(req.params.id)
+            if (!station) {
+                new Error('not valid id')
+            }
+            this.stationRepository.merge(station, req.params)
+            const result = await this.stationRepository.save(station)
+            return res.json(result)
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
 }
 
 export default new StationController()

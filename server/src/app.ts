@@ -6,6 +6,7 @@ import path from 'path'
 import express, {Request, Response, Application} from 'express'
 import DataBase from './DataBase'
 import AppRouter from './routes/routes'
+import dbConnection from "./dbConnection";
 
 const PORT = process.env.PORT || 5050
 
@@ -22,8 +23,7 @@ app.get('*', (req: Request, res: Response):void => {
 
 const start = async () : Promise<void> => {
     try {
-        await DataBase.authenticate()
-        await DataBase.sync({alter: true})
+        await dbConnection.connect()
         app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
     } catch (e) {
         console.error(e)
