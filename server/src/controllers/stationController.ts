@@ -17,9 +17,6 @@ class StationController {
     async create(req: Request, res: Response) {
         try {
             const station = await this.stationRepository.findOne(req.params.id)
-            if (!station) {
-                new Error('not valid id')
-            }
             this.stationRepository.merge(station, req.params)
             const result = await this.stationRepository.save(station)
             return res.json(result)

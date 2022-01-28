@@ -4,19 +4,30 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 export class Station{
 
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number;
 
     @Column({
         type:'string',
         unique:true,
         zerofill:false,
     })
-    name!:string;
+    name:string;
 
     @Column({
         type: 'string',
         unique:true,
         zerofill: false,
     })
-    address!:string;
+    address:string;
+
+    @Column({
+        type:'array',
+        nullable:true,
+    })
+
+    @Column({
+        type:'string',
+        nullable:false,
+    })
+    tel:string
 }
