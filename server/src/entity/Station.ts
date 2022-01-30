@@ -1,33 +1,32 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import Tank from './Tank';
 
 @Entity()
-export class Station{
+export class Station {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({
-        type:'string',
-        unique:true,
-        zerofill:false,
-    })
-    name:string;
+  @Column({
+    type: 'text',
+    unique: true,
+    zerofill: false,
+  })
+  name: string;
 
-    @Column({
-        type: 'string',
-        unique:true,
-        zerofill: false,
-    })
-    address:string;
+  @Column({
+    type: 'text',
+    unique: true,
+    zerofill: false,
+  })
+  address: string;
 
-    @Column({
-        type:'array',
-        nullable:true,
-    })
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
+  tel: string;
 
-    @Column({
-        type:'string',
-        nullable:false,
-    })
-    tel:string
+  @OneToMany(() => Tank, tanks => tanks.station)
+  tanks: Tank[];
 }

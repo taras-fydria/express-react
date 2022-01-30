@@ -8,3 +8,4 @@
 /.idea
 /server/http/test.http
 /.env
+/server/http/station-test.http
