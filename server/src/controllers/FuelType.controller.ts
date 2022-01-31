@@ -1,4 +1,4 @@
-import ProjectController from "./ProjectController";
+import ProjectController from "./Project.controller";
 import FuelType from "../entity/FuelType";
 import {EntityTarget, Repository} from "typeorm";
 import {Request, Response} from "express";
@@ -19,6 +19,7 @@ class FuelTypeController extends ProjectController<FuelType> {
         const fuelType = await repository.findOne(req.params.id)
         return res.json(fuelType)
     }
+
 }
 
 export default new FuelTypeController()

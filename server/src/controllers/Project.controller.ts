@@ -1,6 +1,6 @@
 import {Repository, getRepository, EntityTarget} from 'typeorm';
 
-export default abstract class ProjectController<T> {
+export default abstract class ProjectController<T>{
     private _entity!: EntityTarget<T>
 
     protected constructor(entity: EntityTarget<T>) {

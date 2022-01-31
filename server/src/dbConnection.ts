@@ -26,5 +26,5 @@ export default connectionManager.create({
   password: process.env.DB_PASS,
   port: Number(process.env.DB_PORT),
   entities: [Station, Tank, FuelType],
-  synchronize: false,
+  synchronize: true,
 });

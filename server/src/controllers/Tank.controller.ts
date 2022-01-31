@@ -1,7 +1,7 @@
 import {Response, Request} from 'express';
 import {Repository} from 'typeorm';
 import Tank from '../entity/Tank';
-import ProjectController from "./ProjectController";
+import ProjectController from "./Project.controller";
 
 
 class TankController extends ProjectController<Tank> {

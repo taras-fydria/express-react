@@ -1,5 +1,5 @@
 import {Router, IRouter} from "express";
-import FuelTypeController from "../controllers/FuelTypeController";
+import FuelTypeController from "../controllers/FuelType.controller";
 
 const fuelTypeRouter: IRouter = Router()
 
