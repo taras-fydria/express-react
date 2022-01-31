@@ -5,28 +5,29 @@ import Tank from './Tank';
 export class Station {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({
     type: 'text',
     unique: true,
     zerofill: false,
   })
-  name: string;
+  name!: string;
 
   @Column({
     type: 'text',
     unique: true,
     zerofill: false,
   })
-  address: string;
+  address!: string;
 
   @Column({
     type: 'text',
     nullable: false,
   })
-  tel: string;
+  tel!: string;
 
   @OneToMany(() => Tank, tanks => tanks.station)
-  tanks: Tank[];
+  tanks!: Tank[];
+
 }

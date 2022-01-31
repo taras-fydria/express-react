@@ -14,18 +14,15 @@ class StationController extends ProjectController<Station> {
         return res.json(stations);
     }
 
-    public create = async (req: Request, res: Response): Promise<Response<string>> => {
-        try {
-            const repository: Repository<Station> = this.repository;
-            const station: Station = await repository.findOne(req.params.id);
-            if (station) {
-                repository.merge(station, req.params);
-                const result: Station = await repository.save(station);
-                return res.json(result);
-            }
+    public create = async (req: Request, res: Response): Promise<any> => {
+        try{
 
-        } catch (e) {
-            console.log(e);
+        console.log(req.body)
+        const repository: Repository<Station> = this.repository;
+        const station: Station = repository.create()
+        return res.json(station)
+        }catch (e){
+            console.log(e)
         }
     }
 }

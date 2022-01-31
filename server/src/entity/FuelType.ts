@@ -1,14 +1,18 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import Tank from './Tank';
+import {Station} from "./Station";
 
 @Entity()
 export default class FuelType {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({type: 'float', nullable: false})
-  price: number;
+  price!: number;
 
   @OneToMany(()=>Tank, tank =>tank.fuelType)
-  tanks:Tank[];
+  tanks!:Tank[];
+
+  @ManyToMany(()=>Station)
+  stations?:Station[]
 }

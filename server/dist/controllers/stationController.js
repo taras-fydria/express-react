@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,40 +50,57 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var models_1 = require("../models/models");
-var StationController = /** @class */ (function () {
-    function StationController() {
-    }
-    StationController.prototype.getAll = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var stations;
+var Station_1 = require("../entity/Station");
+var ProjectController_1 = __importDefault(require("./ProjectController"));
+var StationController = /** @class */ (function (_super) {
+    __extends(StationController, _super);
+    function StationController(entity) {
+        if (entity === void 0) { entity = Station_1.Station; }
+        var _this = _super.call(this, entity) || this;
+        _this.getAll = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var repository, stations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, models_1.Station.findAll()];
+                    case 0:
+                        repository = this.repository;
+                        return [4 /*yield*/, repository.find()];
                     case 1:
                         stations = _a.sent();
                         return [2 /*return*/, res.json(stations)];
                 }
             });
-        });
-    };
-    StationController.prototype.create = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, name, address, tel, station;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        }); };
+        _this.create = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var repository, station, result, e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        console.log(req.body);
-                        _a = req.body, name = _a.name, address = _a.address, tel = _a.tel;
-                        return [4 /*yield*/, models_1.Station.create({ name: name, address: address, tel: tel }).catch(function (err) { return console.log(err); })];
+                        _a.trys.push([0, 4, , 5]);
+                        repository = this.repository;
+                        return [4 /*yield*/, repository.findOne(req.params.id)];
                     case 1:
-                        station = _b.sent();
-                        return [2 /*return*/, res.json(station)];
+                        station = _a.sent();
+                        if (!station) return [3 /*break*/, 3];
+                        repository.merge(station, req.params);
+                        return [4 /*yield*/, repository.save(station)];
+                    case 2:
+                        result = _a.sent();
+                        return [2 /*return*/, res.json(result)];
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        e_1 = _a.sent();
+                        console.log(e_1);
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
-        });
-    };
+        }); };
+        return _this;
+    }
     return StationController;
-}());
+}(ProjectController_1.default));
 exports.default = new StationController();

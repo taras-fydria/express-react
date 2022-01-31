@@ -6,11 +6,11 @@ import FuelType from './FuelType';
 export default class Tank {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @ManyToOne(() => Station, station => station.tanks)
-  station: number;
+  station!: number;
 
   @ManyToOne(()=>FuelType, fuelType=> fuelType.tanks)
-  fuelType: number;
+  fuelType!: number;
 }

@@ -17,13 +17,13 @@ class TankController extends ProjectController<Tank> {
 
     public getTank = async (req: Request, res: Response): Promise<Response> => {
         const repo: Repository<Tank> = this.repository;
-        const tank: Tank = await repo.findOne(req.params.id);
+        const tank: Tank | undefined = await repo.findOne(req.params.id);
         return res.json(tank);
     }
 
     public create = async (req: Request, res: Response): Promise<Response> => {
         const repo: Repository<Tank> = this.repository;
-        const tankData = req.params;
+        const tankData = req.body;
         const newTank = await repo.create(tankData);
         return res.json(newTank);
     }

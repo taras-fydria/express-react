@@ -6,6 +6,7 @@ import path from 'path';
 import express, {Request, Response, Application} from 'express';
 import AppRouter from './routes/routes';
 import dbConnection from './dbConnection';
+import errorHandling from "./middleware/ErrorHandling";
 
 const PORT = process.env.PORT || 5050;
 
@@ -19,6 +20,7 @@ app.get('*', (req: Request, res: Response): void => {
     res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'));
 });
 
+app.use(errorHandling)
 
 const start = async (): Promise<void> => {
     try {

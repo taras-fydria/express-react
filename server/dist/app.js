@@ -63,8 +63,8 @@ if (process.env.NODE_ENV !== 'production')
     dotenv.config();
 var path_1 = __importDefault(require("path"));
 var express_1 = __importDefault(require("express"));
-var DataBase_1 = __importDefault(require("./DataBase"));
 var routes_1 = __importDefault(require("./routes/routes"));
+var dbConnection_1 = __importDefault(require("./dbConnection"));
 var PORT = process.env.PORT || 5050;
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -78,20 +78,17 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, DataBase_1.default.authenticate()];
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, dbConnection_1.default.connect()];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, DataBase_1.default.sync({ alter: true })];
-            case 2:
-                _a.sent();
                 app.listen(PORT, function () { return console.log("Example app listening at http://localhost:".concat(PORT)); });
-                return [3 /*break*/, 4];
-            case 3:
+                return [3 /*break*/, 3];
+            case 2:
                 e_1 = _a.sent();
                 console.error(e_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
