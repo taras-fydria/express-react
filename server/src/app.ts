@@ -16,17 +16,17 @@ app.use('/api', AppRouter);
 app.use(express.static(path.resolve(__dirname, '..', '..', 'client', 'dist')));
 
 app.get('*', (req: Request, res: Response): void => {
-  res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'));
 });
 
 
 const start = async (): Promise<void> => {
-  try {
-    await dbConnection.connect();
-    app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`));
-  } catch (e) {
-    console.error(e);
-  }
+    try {
+        await dbConnection.connect();
+        app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`));
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 start();

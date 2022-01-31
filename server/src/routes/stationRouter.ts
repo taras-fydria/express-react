@@ -1,5 +1,5 @@
 import {IRouter, Router} from 'express';
-import stationController from '../controllers/stationController';
+import stationController from '../controllers/StationController';
 
 const stationRouter: IRouter = Router();
 

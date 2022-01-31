@@ -1,5 +1,5 @@
 import  {Router, IRouter} from  'express'
-import tanksController from '../controllers/tanksController'
+import tanksController from '../controllers/TankController'
 
 const tanksRouter:IRouter =  Router()
 
