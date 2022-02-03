@@ -1,6 +1,6 @@
 import {IRouter, Router} from 'express'
-import stationRouter from "./stationRouter";
-import tanksRouter from "./tanksRouter";
+import stationRouter from "./station.router";
+import tanksRouter from "./tanks.router";
 
 
 const AppRouter: IRouter = Router();
