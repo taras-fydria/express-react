@@ -5,13 +5,13 @@ import getData from '../../http/getData';
 const Stations: FC = () => {
   const [stations, setStations] = useState<[]>([]);
   useEffect(() => {
-    fetchStations()
+    fetchStations();
   }, []);
 
   const fetchStations = async (): Promise<void> => {
     try {
-      const stations: void | Array<any> = await getData('/stations');
-      setStations(stations);
+      const newStations: any = await getData('/stations');
+      setStations(newStations);
       console.log(stations);
     } catch (e) {
       console.error(e);
