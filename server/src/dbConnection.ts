@@ -27,4 +27,9 @@ export default connectionManager.create({
   port: Number(process.env.DB_PORT),
   entities: [Station, Tank, FuelType],
   synchronize: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 });
