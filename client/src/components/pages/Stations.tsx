@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {FC, useEffect, useState} from 'react';
 import getData from '../../http/getData';
+import IStation from '../../interfaces/IStation';
 
 const Stations: FC = () => {
-  const [stations, setStations] = useState<[]>([]);
+  const [stations, setStations] = useState<Array<IStation>>([]);
   useEffect(() => {
     fetchStations();
   }, []);
 
-  const fetchStations = async (): Promise<void> => {
+  const fetchStations = async (): Promise<void | Array<IStation>> => {
     try {
       const newStations: any = await getData('/stations');
       setStations(newStations);
-      console.log(stations);
     } catch (e) {
       console.error(e);
     }
@@ -20,7 +20,17 @@ const Stations: FC = () => {
 
   return (
     <div>
-      Station Page
+      {stations && stations.length && (
+        <ul>
+          {stations.map((station: IStation) => (
+            <li key={station.id}>
+              <h2>
+                {station.name}
+              </h2>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
