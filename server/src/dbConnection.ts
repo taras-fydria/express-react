@@ -1,4 +1,8 @@
-import {ConnectionManager, getConnectionManager} from 'typeorm';
+import {
+  ConnectionManager,
+  ConnectionOptions,
+  getConnectionManager,
+} from 'typeorm';
 import {Station} from './entity/Station';
 import Tank from './entity/Tank';
 import FuelType from './entity/FuelType';
@@ -16,8 +20,7 @@ declare global {
   }
 }
 
-const connectionManager: ConnectionManager = getConnectionManager();
-export default connectionManager.create({
+const connectionOptions:ConnectionOptions = {
   name: 'default',
   type: 'postgres',
   username: process.env.DB_USER,
@@ -27,9 +30,14 @@ export default connectionManager.create({
   port: Number(process.env.DB_PORT),
   entities: [Station, Tank, FuelType],
   synchronize: true,
-  extra: {
+  ssl: process.env.NODE_ENV === 'production',
+  extra: process.env.NODE_ENV === 'production' ? {
     ssl: {
-      rejectUnauthorized: false,
-    },
-  },
-});
+      rejectUnauthorized: false
+    }
+  } : false
+}
+
+
+const connectionManager: ConnectionManager = getConnectionManager();
+export default connectionManager.create(<ConnectionOptions>connectionOptions);
