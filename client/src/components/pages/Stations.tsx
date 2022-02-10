@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {FC, useEffect, useState} from 'react';
 import getData from '../../http/getData';
-import IStation from '../../interfaces/IStation';
+import IStation from '../../types/interfaces/IStation';
 
 const Stations: FC = () => {
   const [stations, setStations] = useState<Array<IStation>>([]);

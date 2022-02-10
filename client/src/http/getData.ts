@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import * as process from 'process';
 import {BASE_URL} from './appHTTP';
 
-export default async function(path: string): Promise<void | Array<any>> {
+export default async function(path: string): Promise<void | []> {
   const fullUrl: string = `${BASE_URL}${path}`;
   try {
     const response: Response = await fetch(fullUrl);
