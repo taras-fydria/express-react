@@ -16,6 +16,7 @@ declare global {
       DB_USER: string;
       DB_PASS: string;
       DB_URI: string,
+      DEV:boolean,
     }
   }
 }
@@ -30,8 +31,8 @@ const connectionOptions:ConnectionOptions = {
   port: Number(process.env.DB_PORT),
   entities: [Station, Tank, FuelType],
   synchronize: true,
-  ssl: process.env.NODE_ENV === 'production',
-  extra: process.env.NODE_ENV === 'production' ? {
+  ssl: !process.env.DEV,
+  extra: !process.env.DEV ? {
     ssl: {
       rejectUnauthorized: false
     }

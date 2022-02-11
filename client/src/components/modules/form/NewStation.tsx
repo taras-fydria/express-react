@@ -2,6 +2,7 @@ import * as React from 'react';
 import {FC, FormEvent, useState} from 'react';
 import BaseInput from './BaseInput';
 import IStation from '../../../types/interfaces/IStation';
+import InputType from "../../../types/enums/EnumTypes";
 
 const NewStation:FC = props => {
   const [newStation, setNewStation] = useState<IStation|null>(null)
@@ -11,7 +12,7 @@ const NewStation:FC = props => {
   return(
     <>
       <form onSubmit={formSubmitHandler}>
-        <BaseInput name={} labelClass={} type={''}
+        <BaseInput name={InputType.name} labelClass={'test'} type={InputType.name}/>
       </form>
     </>
   )

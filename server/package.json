@@ -4,7 +4,7 @@
   "description": "express rest API server with typescript",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon nodemon.json mode=develpment .eslintrc.json",
+    "dev": "nodemon nodemon.json mode=develpment .eslintrc.json NODE_ENV=dev",
     "build": "tsc",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },

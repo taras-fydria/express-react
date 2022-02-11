@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/dist/app.js"
+    "start": "node server/dist/app.js NODE_ENV=production"
   },
   "engines": {
     "node": "16.x"
