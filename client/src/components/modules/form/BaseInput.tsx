@@ -9,14 +9,14 @@ interface IBaseInput{
 }
 
 const BaseInput:FC<IBaseInput> = (props):ReactElement => {
-  const {name, labelClass, type} = props
+  const {name, labelClass, type, children} = props
   const [value, setValue] = useState(null)
   const updateValue = (value: any) =>setValue(value)
 
   return(
     <div>
       <label htmlFor={name} className={labelClass}>
-
+        {children}
       </label>
     </div>
   )

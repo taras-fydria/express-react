@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {FC, useEffect, useState} from 'react';
-import getData from '../../http/getData';
+import getData from '../../util/http/getData';
 import IStation from '../../types/interfaces/IStation';
 
 const Stations: FC = () => {
