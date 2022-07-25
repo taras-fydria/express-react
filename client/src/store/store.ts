@@ -1,13 +1,13 @@
-import {configureStore, combineReducers, Reducer} from '@reduxjs/toolkit'
-import {loadingReducer} from "./loadingReducer";
+import {configureStore} from '@reduxjs/toolkit'
+import LoadingReducer from "./loadingReducer";
 
-const rootReducer = combineReducers<Reducer>({loadingReducer})
-
-const store = configureStore({
-    reducer: rootReducer,
-    devTools: true
+export const store = configureStore({
+    reducer: {
+        loading: LoadingReducer
+    }
 })
 
 // export type RootState = ReturnType<typeof rootReducer>
 
-export default store
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

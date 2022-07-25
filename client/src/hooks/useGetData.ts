@@ -1,16 +1,17 @@
-import {useEffect, useReducer, useState} from "react";
+import {useEffect, useState} from "react";
 import {BASE_URL} from "../util/http/appHTTP";
-import {loadingReducer, initialState, Actions} from "../store/loadingReducer";
+import {useAppDispatch} from "./storeHooks";
+import {loading, loaded, failed} from "../store/loadingReducer";
 
 
 export default function useGetData(path: string) {
     const [data, setData] = useState<any | null>(null)
+    const dispatch = useAppDispatch()
     const [requestUrl] = useState(`${BASE_URL}${path}`)
-    const [_, dispatch] = useReducer(loadingReducer, initialState)
 
     useEffect(() => {
         (async () => {
-            dispatch({type: Actions.Loading, payload: initialState})
+            dispatch(loading)
             try {
                 const response: Response = await fetch(requestUrl);
                 const json = response.ok && response.status === 200 ?
@@ -18,14 +19,14 @@ export default function useGetData(path: string) {
                     :
                     new Error(response.statusText);
                 setData(json)
-                dispatch({type:Actions.Loaded})
+                dispatch(loaded)
             } catch (error) {
-                dispatch({type: Actions.Failed})
+                dispatch(failed)
             }
         })()
-        return ()=>{
+        return () => {
             setData(null)
-            dispatch({type:Actions.Loading})
+            dispatch(loading)
         }
     }, [])
 

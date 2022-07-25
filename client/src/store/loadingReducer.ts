@@ -1,3 +1,6 @@
+import {createSlice} from "@reduxjs/toolkit";
+import {RootState} from "./store";
+
 export enum Actions {
     Loading = 'LOADING',
     Loaded = 'LOADED',
@@ -21,23 +24,23 @@ export type Action = {
     payload?: IState
 }
 
-export  function loadingReducer (state: IState = initialState, action: Action): IState {
-    const type = action.type;
-    switch (type) {
-        case Actions.Loading:
-            return {
-                ...state,
-                loading: true
-            }
-        case Actions.Loaded:
-            return {
-                ...state,
-                loaded: true
-            }
-        case Actions.Failed:
-            return {
-                ...state,
-                failed: true,
-            }
+export const loadingSlice = createSlice({
+    name: "loading",
+    initialState,
+    reducers: {
+        loading: state => {
+            state.loading = true
+        },
+        loaded: state => {
+            state.loaded = true
+        },
+        failed: state => {
+            state.failed = true
+        }
     }
-}
+})
+
+
+export const {loading, loaded, failed} = loadingSlice.actions
+export const selectLoading = (state: RootState) => state.loading
+export default loadingSlice.reducer

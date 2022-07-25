@@ -1,13 +1,15 @@
 import * as React from "react";
 import './App.scss'
 import {Routes, Route} from "react-router-dom";
-import {FC, useEffect, useReducer, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import MainHeader from "./components/UI/MainHeader";
 import {router} from "./router/router";
-import {initialState, loadingReducer} from "./store/loadingReducer";
+import {useAppSelector} from "./hooks/storeHooks";
+import {IState} from "./store/loadingReducer";
 
 const App: FC = (): JSX.Element => {
-    const [appState, _] = useReducer(loadingReducer, initialState)
+    const appState: IState = useAppSelector(state => state.loading)
+    console.log(appState)
     const updateLoadingClass = (): string => {
         let className = 'app-main';
         switch (true) {
