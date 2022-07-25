@@ -15,7 +15,7 @@ export const router:Array<RouteProps> = [
     },
     {
         path: '/tanks',
-        element: <Tanks/>
+        element: <Tanks/>,
     }
 ]
 

@@ -1,38 +1,26 @@
 import * as React from 'react';
-import {FC, useEffect, useState} from 'react';
-import getData from '../../util/http/getData';
+import {FC} from 'react';
 import IStation from '../../types/interfaces/IStation';
+import useGetData from "../../hooks/useGetData";
 
 const Stations: FC = () => {
-  const [stations, setStations] = useState<Array<IStation>>([]);
-  useEffect(() => {
-    fetchStations();
-  }, []);
+    const stations: Array<IStation> = useGetData('/stations');
 
-  const fetchStations = async (): Promise<void | Array<IStation>> => {
-    try {
-      const newStations: any = await getData('/stations');
-      setStations(newStations);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  return (
-    <div>
-      {stations && stations.length && (
-        <ul>
-          {stations.map((station: IStation) => (
-            <li key={station.id}>
-              <h2>
-                {station.name}
-              </h2>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            {stations && stations.length && (
+                <ul>
+                    {stations.map((station: IStation) => (
+                        <li key={station.id}>
+                            <h2>
+                                {station.name}
+                            </h2>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 };
 
 export default Stations;

@@ -22,7 +22,7 @@ const FormInput: FC<IFormInput> = props => {
                     {label}
                 </label>
             )}
-            <Input className={''} name={name} onChange={onChange} />
+            <Input className={''} name={name} onChange={onChange} value={} />
         </>
     )
 }
