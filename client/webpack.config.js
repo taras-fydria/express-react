@@ -16,31 +16,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      // {
-      //   test: /\.css?$/,
-      //   use: [
-      //     { loader: "style-loader" },
-      //     { loader: "css-loader" },
-      //   ]
-      // },
-      // {
-      //   test: /\.css$/,
-      //   use: [MiniCssExtractPlugin.loader, "css-loader"]
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-      // },
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-      //   exclude: /node_modules/,
-      //   use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
-      // },
-      {
         test: /\.(scss)$/,
         use: [{
           // inject CSS to page
