@@ -5,13 +5,12 @@ import useGetData from "../../hooks/useGetData";
 
 const Stations: FC = () => {
     const stations: Array<IStation> = useGetData('/stations');
-
     return (
-        <div>
+        <div className={`station-page`}>
             {stations && stations.length && (
-                <ul>
+                <ul className={'station-list'}>
                     {stations.map((station: IStation) => (
-                        <li key={station.id}>
+                        <li className={`station-list__item`} key={station.id}>
                             <h2>
                                 {station.name}
                             </h2>

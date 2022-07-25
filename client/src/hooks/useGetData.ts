@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {BASE_URL} from "../util/http/appHTTP";
 import {useAppDispatch} from "./storeHooks";
-import {loading, loaded, failed} from "../store/loadingReducer";
+import {loading, loaded, failed} from "../store/appLoading";
 
 
 export default function useGetData(path: string) {

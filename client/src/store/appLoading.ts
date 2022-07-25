@@ -1,32 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "./store";
 
-export enum Actions {
-    Loading = 'LOADING',
-    Loaded = 'LOADED',
-    Failed = 'FAILED'
-}
-
-export interface IState {
+export interface IAppLoading {
     loading: boolean,
     loaded: boolean,
     failed: boolean,
 }
 
-export const initialState: IState = {
+export const appLoading: IAppLoading = {
     loading: false,
     failed: false,
     loaded: false
 }
 
-export type Action = {
-    type: Actions,
-    payload?: IState
-}
-
 export const loadingSlice = createSlice({
     name: "loading",
-    initialState,
+    initialState: appLoading,
     reducers: {
         loading: state => {
             state.loading = true
@@ -42,5 +31,5 @@ export const loadingSlice = createSlice({
 
 
 export const {loading, loaded, failed} = loadingSlice.actions
-export const selectLoading = (state: RootState) => state.loading
+export const selectLoading = (state: RootState) => state.appLoading
 export default loadingSlice.reducer

@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
-import LoadingReducer from "./loadingReducer";
+import AppLoading from "./appLoading";
+import stationPage from "./selectStationPage";
 
 export const store = configureStore({
     reducer: {
-        loading: LoadingReducer
+        appLoading: AppLoading,
+        stationPage: stationPage
     }
 })
 
