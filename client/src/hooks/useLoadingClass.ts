@@ -4,7 +4,6 @@ import {useAppSelector} from "./storeHooks";
 
 export default function useLoadingClass(blockClass: string) {
     const appState: IAppLoading = useAppSelector(selectLoading)
-    console.log(appState)
 
     const updateLoadingClass = (): string => {
         let className = blockClass;
