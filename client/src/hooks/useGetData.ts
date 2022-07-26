@@ -11,7 +11,7 @@ export default function useGetData(path: string) {
 
     useEffect(() => {
         (async () => {
-            dispatch(loading)
+            dispatch(loading())
             try {
                 const response: Response = await fetch(requestUrl);
                 const json = response.ok && response.status === 200 ?
@@ -19,14 +19,14 @@ export default function useGetData(path: string) {
                     :
                     new Error(response.statusText);
                 setData(json)
-                dispatch(loaded)
+                dispatch(loaded())
             } catch (error) {
-                dispatch(failed)
+                dispatch(failed())
             }
         })()
         return () => {
             setData(null)
-            dispatch(loading)
+            dispatch(loading())
         }
     }, [])
 

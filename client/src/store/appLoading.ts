@@ -22,9 +22,11 @@ export const loadingSlice = createSlice({
         },
         loaded: state => {
             state.loaded = true
+            state.loading = false
         },
         failed: state => {
             state.failed = true
+            state.loading = false
         }
     }
 })

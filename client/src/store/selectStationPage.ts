@@ -15,7 +15,7 @@ export const stationListSlice = createSlice({
     initialState: stationPage,
     reducers: {
         load: (state: IStationPage, action: PayloadAction<[IStation]>) => {
-
+            
         }
     }
 })
