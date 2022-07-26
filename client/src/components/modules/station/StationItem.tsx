@@ -13,17 +13,17 @@ const StationItem: FC<IStationItem> = ({station, editable}) => {
     const buttonLabel = () => !showUpdateForm ? 'Edit Station' : 'Close Edit'
 
     return (
-        <div className={`station-item`}>
+        <>
             {editable ? (
                 <>
                     {showUpdateForm ?
-                        <StationForm/> :
+                        <StationForm name={name}/> :
                         <StationPreview id={id} name={name} address={address} tel={tel} tanks={tanks}/>
                     }
-                    <button onClick={btnClickHandler}>{buttonLabel()}</button>
+                    <button className={`btn btn-dark`} onClick={btnClickHandler}>{buttonLabel()}</button>
                 </>
             ) : <StationPreview id={id} name={name} address={address} tel={tel} tanks={tanks}/>}
-        </div>
+        </>
     )
 }
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FC} from "react";
-import IStation from "../../../types/interfaces/IStation";
+import {IStation} from "../../../types/interfaces/Station";
 
 interface IProjectForm{
     formData: IStation | any

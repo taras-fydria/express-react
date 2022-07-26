@@ -9,12 +9,12 @@ interface iHeaderNav {
 const Nav: FC<iHeaderNav> = (props) => {
   const {navMenu} = props;
   return (
-    <nav>
+    <nav >
       {navMenu && navMenu.length > 0 && (
-        <ul>
+        <ul className="nav">
           {navMenu.map((item, i) => (
-            <li key={i}>
-              <NavLink to={item.to}>{item.title}</NavLink>
+            <li key={i} className="nav-item">
+              <NavLink to={item.to} className={`nav-link`}>{item.title}</NavLink>
             </li>
           ))}
         </ul>
