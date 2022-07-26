@@ -9,5 +9,3 @@
 /server/http/test.http
 /.env
 /server/http/station-test.http
-/server/dist/
-client/dist/
