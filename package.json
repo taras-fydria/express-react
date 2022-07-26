@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/dist/app.js NODE_ENV=production"
+    "start": "tsc && node server/dist/app.js NODE_ENV=production"
   },
   "engines": {
     "node": "16.x"
@@ -13,6 +13,7 @@
     "express": "^4.17.2",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "tsc": "^2.0.4",
     "typeorm": "^0.2.41"
   }
 }
