@@ -1,25 +1,16 @@
-import * as React from 'react';
-import {FC, ReactElement, useState} from 'react';
-import InputType from '../../../types/enums/EnumTypes';
+import * as React from "react";
+import {FC, useContext} from "react";
+import FormContext from "./FormContext";
+import {IBaseInput} from "../../../types/interfaces/project-form";
 
-interface IBaseInput{
-  name:string,
-  labelClass:string,
-  type:InputType
+
+
+const BaseInput: FC<IBaseInput> = ({name, type, placeholder, value}) => {
+    const {updateForm} = useContext(FormContext)
+    return (
+        <input type={type} name={name} placeholder={placeholder} value={value} onChange={updateForm}/>
+    )
 }
 
-const BaseInput:FC<IBaseInput> = (props):ReactElement => {
-  const {name, labelClass, type, children} = props
-  const [value, setValue] = useState(null)
-  const updateValue = (value: any) =>setValue(value)
-
-  return(
-    <div>
-      <label htmlFor={name} className={labelClass}>
-        {children}
-      </label>
-    </div>
-  )
-}
 
 export default BaseInput
