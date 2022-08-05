@@ -1,7 +1,8 @@
 import * as React from "react";
 import {FC} from "react";
 import BaseInput from "../components/modules/form/BaseInput";
-import {IBaseInput, ITextInput, InputType} from "../types/interfaces/project-form";
+import {IBaseInput, ITextInput} from "../types/interfaces/project-form";
+import {InputType} from "../types/enums/EnumTypes";
 
 
 const textInput = (Component: FC<IBaseInput>) => {

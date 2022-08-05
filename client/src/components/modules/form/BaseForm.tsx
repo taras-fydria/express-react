@@ -8,13 +8,12 @@ const BaseForm: FC<IBaseForm> = props => {
     const formClass = () => props.formClass ? `form ${props.formClass}` : 'form'
     const [formData, setFormData] = useState(props.formData)
 
-    const updateForm = (event:any) => {
-        console.log(event.target.value)
+    const updateForm = (event:FormEvent<HTMLFormElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        console.log(event.target)
         for (const property in formData){
-            console.log(property, formData)
+            // console.log(property, formData)
         }
     }
-
 
     return (
         <FormProvider value={{updateForm}}>

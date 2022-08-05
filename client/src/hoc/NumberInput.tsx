@@ -1,6 +1,7 @@
 import {FC} from "react";
 import BaseInput from "../components/modules/form/BaseInput";
-import {IBaseInput, InputType, INumberInput} from "../types/interfaces/project-form";
+import {IBaseInput, INumberInput} from "../types/interfaces/project-form";
+import {InputType} from "../types/enums/EnumTypes";
 
 const numberInput = (Component:FC<IBaseInput>) => {
   return (props:INumberInput)=>{

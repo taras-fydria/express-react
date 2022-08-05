@@ -17,7 +17,8 @@ const StationItem: FC<IStationItem> = ({station, editable}) => {
             {editable ? (
                 <>
                     {showUpdateForm ?
-                        <StationForm {...station}/> :
+                        <StationForm {...station}/>
+                        :
                         <StationPreview id={id} name={name} address={address} tel={tel} tanks={tanks}/>
                     }
                     <button className={`btn btn-dark`} onClick={btnClickHandler}>{buttonLabel()}</button>
